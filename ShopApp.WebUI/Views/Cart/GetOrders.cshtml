@@ -1,0 +1,46 @@
+﻿@model List<OrderListModel>
+@{
+    ViewData["Title"] = "GetOrders";
+}
+
+<h1>GetOrders</h1>
+<hr />
+
+@foreach (var item in Model)
+{
+    <table class="table table-bordered table-sm mb-3">
+        <thead>
+            <tr>
+                <th colspan="2">Order Id: #@item.OrderId</th>
+                <th>Price</th>
+                <th>Quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item2 in item.OrderItems)
+            {
+            <tr>
+                <td><img src="~/img/@item2.ImageUrl" width="50" /></td>
+                <td>@item2.Name</td>
+                <td>@item2.Price</td>
+                <td>@item2.Quantity</td>
+            </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="2">Customer Name:</td>
+                <td>@item.FirstName @item.LastName</td>
+            </tr>
+            <tr>
+                <td colspan="2">Address:</td>
+                <td colspan="2">@item.Address</td>
+            </tr>
+            <tr>
+                <td colspan="2">Phone:</td>
+                <td colspan="2">@item.Phone</td>
+            </tr>
+
+        </tfoot>
+    </table>
+}
